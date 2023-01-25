@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="ocars"
+  xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:include filename="$(find guideway_description)/urdf/guideway.xacro"/>
+  <xacro:include filename="$(find rm_75_description)/urdf/rm_75.xacro" />
+
+  <!-- define -->
+  <xacro:property name="the_radius" value="2.1" />
+  <xacro:property name="the_length" value="4.5" />
+
+  <xacro:macro name="ocars" params="prefix">
+    <xacro:guideway prefix="guideway_" />
+    <xacro:rm_75_robot prefix="rm_" />
+
+    <joint name="guide_rm75_joint" type="fixed">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <parent link="guideway_dummy"/>
+      <child link="rm_base_link"/>
+    </joint>
+</xacro:macro>
+
+</robot>

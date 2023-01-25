@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="XDZX_KJMZ">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.0090138196978487 -0.000487936159487117 -0.069422358748494"
+        rpy="0 0 0" />
+      <mass
+        value="172.432383747284" />
+      <inertia
+        ixx="32.0416656465378"
+        ixy="3.04696444198662E-07"
+        ixz="-0.00292147972255638"
+        iyy="8.70986650316774"
+        iyz="1.10089915248003E-15"
+        izz="38.2098967077181" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://XDZX_KJMZ/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://XDZX_KJMZ/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="mzgd_Link">
+    <inertial>
+      <origin
+        xyz="-0.0599914131145276 0.684105680732694 0.0117507710923801"
+        rpy="0 0 0" />
+      <mass
+        value="3.0691139500415" />
+      <inertia
+        ixx="0.293823807431012"
+        ixy="1.27502625425256E-05"
+        ixz="-1.07137072304449E-05"
+        iyy="0.00402447721921005"
+        iyz="0.000246350256723893"
+        izz="0.290659809635517" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://XDZX_KJMZ/meshes/mzgd_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://XDZX_KJMZ/meshes/mzgd_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="mzgd_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="mzgd_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="mzyd_Link">
+    <inertial>
+      <origin
+        xyz="-0.0205941685448234 -0.000718233526313061 -3.1408777709574E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.297197332232527" />
+      <inertia
+        ixx="0.000510705749277775"
+        ixy="-1.36059146153555E-07"
+        ixz="9.80015618055514E-10"
+        iyy="0.000302860321444334"
+        iyz="-1.22959794480563E-08"
+        izz="0.000261150132305042" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://XDZX_KJMZ/meshes/mzyd_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://XDZX_KJMZ/meshes/mzyd_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="mzyd_joint"
+    type="prismatic">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="mzgd_Link" />
+    <child
+      link="mzyd_Link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="1"
+      effort="10"
+      velocity="10" />
+  </joint>
+  <link name="conn_link">
+  </link>
+  <joint name="conn_joint" type="fixed">
+    <origin xyz="-0.1205 -0.5125 0.6" rpy="3.1415 -1.5707 0" />
+    <parent link="mzyd_Link" />
+    <child link="conn_link" />
+    <axis xyz="0 0 1" />
+  </joint>
+</robot>

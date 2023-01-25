@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="guideway" params="prefix">
+    <link name="${prefix}base_link">
+      <inertial>
+        <origin xyz="-0.0090138196978487 -0.000487936159487117 -0.069422358748494" rpy="0 0 0" />
+        <mass value="172.432383747284" />
+        <inertia ixx="32.0416656465378" ixy="3.04696444198662E-07" ixz="-0.00292147972255638" iyy="8.70986650316774" iyz="1.10089915248003E-15" izz="38.2098967077181" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://guideway_description/meshes/desk_link.STL" />
+        </geometry>
+        <material name="">
+          <color rgba="1 1 1 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://guideway_description/meshes/desk_link.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <link name="${prefix}guide_link">
+      <inertial>
+        <origin xyz="-0.0599914131145276 0.684105680732694 0.0117507710923801" rpy="0 0 0" />
+        <mass value="3.0691139500415" />
+        <inertia ixx="0.293823807431012" ixy="1.27502625425256E-05" ixz="-1.07137072304449E-05" iyy="0.00402447721921005" iyz="0.000246350256723893" izz="0.290659809635517" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://guideway_description/meshes/guide_link.STL" />
+        </geometry>
+        <material name="">
+          <color rgba="1 1 1 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://guideway_description/meshes/guide_link.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint name="${prefix}base_joint" type="fixed">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <parent link="${prefix}base_link" />
+      <child link="${prefix}guide_link" />
+      <axis xyz="0 0 0" />
+    </joint>
+    <link name="${prefix}slider_link">
+      <inertial>
+        <origin xyz="-0.0205941685448234 -0.000718233526313061 -3.1408777709574E-05" rpy="0 0 0" />
+        <mass value="0.297197332232527" />
+        <inertia ixx="0.000510705749277775" ixy="-1.36059146153555E-07" ixz="9.80015618055514E-10" iyy="0.000302860321444334" iyz="-1.22959794480563E-08" izz="0.000261150132305042" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://guideway_description/meshes/slider_link.STL" />
+        </geometry>
+        <material name="">
+          <color rgba="1 1 1 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://guideway_description/meshes/slider_link.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint name="${prefix}guide_joint" type="prismatic">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <parent link="${prefix}guide_link" />
+      <child link="${prefix}slider_link" />
+      <axis xyz="0 1 0" />
+      <limit lower="0" upper="1" effort="10" velocity="10" />
+    </joint>
+    <joint name="${prefix}conn_joint" type="fixed">
+      <origin xyz="-0.1205 -0.5125 0.6" rpy="3.1415 -1.5707 0" />
+      <parent link="${prefix}slider_link" />
+      <child link="${prefix}dummy" />
+      <axis xyz="0 0 1" />
+    </joint>
+    <link name="${prefix}dummy">
+    </link>
+  </xacro:macro>
+</robot>

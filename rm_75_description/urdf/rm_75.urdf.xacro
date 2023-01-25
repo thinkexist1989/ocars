@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="rm_75" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:include filename="$(find rm_75_description)/urdf/rm_75.xacro"/>
+  <xacro:include filename="$(find rm_75_description)/urdf/rm_75.control.xacro"/>
+  <xacro:include filename="$(find rm_75_description)/urdf/rm_75.transmission.xacro"/>
+  <xacro:include filename="$(find rm_75_description)/urdf/rm_75.gazebo.xacro"/>
+
+  <xacro:rm_75_robot prefix="rm_" />
+
+  <!-- Transmissions for ROS Control -->
+  <xacro:transmission_block joint_name="joint1"/>
+  <xacro:transmission_block joint_name="joint2"/>
+  <xacro:transmission_block joint_name="joint3"/>
+  <xacro:transmission_block joint_name="joint4"/>
+  <xacro:transmission_block joint_name="joint5"/>
+  <xacro:transmission_block joint_name="joint6"/>
+  <xacro:transmission_block joint_name="joint7"/>
+
+  <!-- ros_control plugin -->
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/arm</robotNamespace>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+      <legacyModeNS>true</legacyModeNS>
+    </plugin>
+  </gazebo>
+
+</robot>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="gripper">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.0343602388115351 -0.0135600432262813 -0.0121827005861681"
+        rpy="0 0 0" />
+      <mass
+        value="0.150138292938201" />
+      <inertia
+        ixx="4.28065249904876E-05"
+        ixy="2.7889980867191E-06"
+        ixz="-9.95773981317376E-08"
+        iyy="7.08193033845564E-05"
+        iyz="1.64675674139304E-07"
+        izz="9.7851511243247E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="Empty_Link">
+    <inertial>
+      <origin
+        xyz="0.0373154854307915 1.91767601864411E-09 -0.0227872043702891"
+        rpy="0 0 0" />
+      <mass
+        value="0.00198317535499014" />
+      <inertia
+        ixx="1.81629650443448E-07"
+        ixy="1.51929127721058E-15"
+        ixz="-7.77363284072925E-09"
+        iyy="1.80738094620205E-07"
+        iyz="1.22029525686304E-14"
+        izz="1.99456478280482E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/Empty_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gripper_description/meshes/Empty_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="jz_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Empty_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>
